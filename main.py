@@ -20,6 +20,8 @@ def main():
     paser_list = subparsers.add_parser('list',help='liste des logiciel')
     # Deffinition de la command config
     parser_config = subparsers.add_parser('config',help="commande qui permet de configurer l'emplacement des logiciel installer")
+    # Deffinition de la command help
+    parser_help = subparsers.add_parser('help',help="aide")
     # Verrification des argument
     args = parser.parse_args()
     if (args.command =='install'):
@@ -49,7 +51,12 @@ def main():
                 folder = filedialog.askdirectory(title="Sélectionner un dossier")
                 fileConfig.EcritureJSON("file",folder)
                 print("Emplacement configurer")
-
+            else :
+                if (args.command=='help') :
+                    print("Aide du logiciel Arrera Tiger:\n"+
+                          "- Commande 'install -s nom_logiciel' : Permet installer un logiciel\n"+
+                          "- Commande 'list' : Permet de voir le logiciel possible a installer\n"+
+                          "- Commande 'config' : Permet definir l'emplacement ou seront installer les logiciel")
 
     
 if __name__ == "__main__":
